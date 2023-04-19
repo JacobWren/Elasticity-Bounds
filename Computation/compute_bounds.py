@@ -420,7 +420,7 @@ def debugger(port_mapping):
 
 # debugger([64734])  # Start debugging :)
 
-# Specified some options #
+# Specified some options for convenience #
 computational_methods = {0: "brute force", 1: "Nelder-Mead", 2: "trust-constr"}
 norms = {0: "Euclidean", 1: "1"}
 loss = {0: "rmse", 1: "rrtse", 2: "mae"}
