@@ -4,7 +4,7 @@ import numpy as np
 from numpy.random import default_rng  # rng = Random Number Generator
 
 
-def starting_points(target_tuner, norm, sample_size, rng=None, n_guesses=59):
+def starting_points(target_tuner, norm, sample_size, rng=None, n_guesses=79):
     """Initial guesses for \hat{\kappa} search; norm criterion dependent."""
     rng = default_rng(rng)
     if norm == "1":

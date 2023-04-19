@@ -324,7 +324,7 @@ def compute_bounds_manager(
             comm.Abort()
 
 
-def generate_data(
+def sim_bounds(
     constraint,
     norm,
     upper,
@@ -425,20 +425,20 @@ computational_methods = {0: "brute force", 1: "Nelder-Mead", 2: "trust-constr"}
 norms = {0: "Euclidean", 1: "1"}
 loss = {0: "rmse", 1: "rrtse", 2: "mae"}
 
-generate_data(
+sim_bounds(
     constraint="Soft",
     norm=norms[1],
     upper=False,
     loss_type=loss[0],
-    reps=2,
-    S=2,  # Number of draws from F.
-    sample_size=4000,
+    reps=500,
+    S=500,  # Number of draws from F.
+    sample_size=8000,
     dgp_instance=dgp_setup.dgp_constructor(),  # Default arguments are passed in the "dgp_setup" module.
     x_bar=1,
     e_bar=-1,
     X_independent_of_B_flag=True,
     population_flag=False,
     backend="multiprocessing",
-    n_workers=1,
-    method=computational_methods[0],
+    n_workers=4,
+    method=computational_methods[1],
 )
