@@ -9,7 +9,7 @@ from functools import reduce
 import operator
 
 if sys.platform == "darwin":  # OS X
-    sys.path.insert(1, "/Users/jakewren/PycharmProjects/UChicago/Mixed_Logit/Helpers")
+    sys.path.insert(1, "/Users/jakewren/PycharmProjects/Elasticity/Helpers")
 
 import dgp_helpers as dgp_helpers
 

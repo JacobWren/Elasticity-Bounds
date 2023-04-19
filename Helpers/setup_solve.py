@@ -2,7 +2,10 @@
 Pass in Gurobi solving parameters and choose Gurobi Algorithm.
 """
 import pyomo.environ as pyo
+from pyutilib.common import ApplicationError
+
 import time
+
 import control_display as display
 
 
@@ -14,10 +17,7 @@ def instantiate_solve(opt, model, rank):
             opt.set_instance(model)
             display.speak()  # Allow output
             break
-        except (
-            Exception
-        ):  # This is a gurobipy.GurobiError Error, but for a reason I can not understand, the
-            # cluster throws the error anyway...
+        except ApplicationError:
             # Hit Gurobi token server limit (4096).
             print("No tokens available.")
             # Vary wait times across compute nodes.
@@ -28,23 +28,17 @@ def solver_options(norm):
     # Persistent solver interfaces are best suited for incremental changes to a Pyomo model.
     opt = pyo.SolverFactory("gurobi_persistent")
 
-    # if norm != "Euclidean":
-    #     gurobi_algorithm = 3  # concurrent
-    #     opt.options[
-    #         "Threads"
-    #     ] = 3  # Setting Threads > 1 may kill determinism, which is helpful for testing/making comparisons.
-    # else:
-    #     gurobi_algorithm = 2  # barrier
-    #     opt.options[
-    #         "Threads"
-    #     ] = 4
+    if norm != "Euclidean":
+        gurobi_algorithm = 3  # concurrent
+        solver_threads = 3
+    else:
+        gurobi_algorithm = 2  # barrier
+        solver_threads = 4
 
+    opt.options["Threads"] = solver_threads
     opt.options[
         "Method"
-    ] = 3  # This is not strictly necessary; but certain algorithms are deterministic, which makes
-    # # testing easier.
-
-    opt.options["Threads"] = 2
+    ] = gurobi_algorithm
 
     # I left in some alternative gurobi parameters that can be helpful for solving challenging programs.
     # opt.options["NonConvex"] = 2

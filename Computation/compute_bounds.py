@@ -12,7 +12,7 @@ from joblib import Parallel, delayed, parallel_backend
 from mpi4py import MPI
 
 if sys.platform == "darwin":  # OS X
-    sys.path.insert(1, "/Users/jakewren/PycharmProjects/UChicago/Mixed_Logit/Helpers")
+    sys.path.insert(1, "/Users/jakewren/PycharmProjects/Elasticity/Helpers")
 
 import dgp_setup as dgp_setup
 import estimate as estimation
@@ -420,13 +420,16 @@ def debugger(port_mapping):
 
 # debugger([64734])  # Start debugging :)
 
+# Specified some options #
 computational_methods = {0: "brute force", 1: "Nelder-Mead", 2: "trust-constr"}
+norms = {0: "Euclidean", 1: "1"}
+loss = {0: "rmse", 1: "rrtse", 2: "mae"}
 
 generate_data(
     constraint="Soft",
-    norm="Euclidean",
+    norm=norms[1],
     upper=False,
-    loss_type="rmse",  # Options: rmse, rrtse, or mae
+    loss_type=loss[0],
     reps=2,
     S=2,  # Number of draws from F.
     sample_size=4000,

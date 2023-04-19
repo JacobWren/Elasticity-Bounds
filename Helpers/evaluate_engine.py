@@ -1,5 +1,4 @@
 """Bootstrap evaluations."""
-import numpy as np
 
 import variable_n_portion_model as vnpm
 import variable_n_tuner_portion_model as vntpm

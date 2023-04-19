@@ -6,7 +6,7 @@ from numpy.random import default_rng
 import draw as draw
 
 if sys.platform == "darwin":  # OS X
-    sys.path.insert(1, "/Users/jakewren/PycharmProjects/UChicago/Mixed_Logit/Helpers")
+    sys.path.insert(1, "/Users/jakewren/PycharmProjects/Elasticity/Helpers")
 
 import dgp_helpers as dgp_helpers
 
