@@ -1,6 +1,6 @@
 All methods are implemented in Python 3.11, where a list of the dependencies can be found in `requirements.txt`.
 
-From the command line run, `mpiexec -n np python3 compute_bounds.py`, where np is the number of processes mpi will run.
+From the command line, `cd` into `Computation`, and run, `mpiexec -n np python3 compute_bounds.py`, where np is the number of processes mpi will run.
 
 A few of the relevant arguments to our method, `sim_bounds()`, include:
 1. The criterion choice (**1**-norm or Euclidean norm)
