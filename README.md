@@ -8,3 +8,5 @@ A few of the relevant arguments to our method, `sim_bounds()`, include:
 3. Method to optimize the tuning parameter (Nelder-Mead, gradient descent, or brute force)
 
 You can obtain a license from [Gurobi's](https://www.gurobi.com/free-trial/) website to run the simulation.
+
+*Please note, this project was not able to be completed.
